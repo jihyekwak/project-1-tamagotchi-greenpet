@@ -150,6 +150,7 @@ function gameStop() {
     clearInterval(interval);
     clearTimeout(timeout);
     stopTimer();
+    printResult();
 };
 
 // set timer
@@ -165,4 +166,11 @@ let timerInterval = setInterval(function() {
 
 function stopTimer() {
     clearInterval(timerInterval);
+}
+
+// result page
+function printResult() {
+    play.classList.add("inactive");
+    const result = document.querySelector(".result");
+    result.classList.remove("inactive");
 }

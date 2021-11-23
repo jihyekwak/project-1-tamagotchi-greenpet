@@ -140,6 +140,26 @@ input {
     border-radius: 5px;
 }
 
+.result {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 1px dotted black;
+    margin: 50px;
+}
+.resultPlantImg {
+    border: 1px dotted black;
+}
+.resultMsg {
+    border: 5px solid white;
+    border-radius: 10px;
+    text-align: center;
+    width: 40%;
+    height: 400px;
+    padding: 10px;
+}
+
 .inactive {
     display: none;
 }
