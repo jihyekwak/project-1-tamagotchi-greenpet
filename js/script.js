@@ -22,12 +22,12 @@ $("#sunlight").on("click", giveSunlight);
 $("#tempUp").on("click", tempUp);
 $("#tempDown").on("click", tempDown);
 
-// functions
+// functions for buttons (event listener)
 // give water
 function giveWater() {
     if (plant.water < 100) {
         console.log("You gave water");
-        plant.water += 10;
+        plant.water += 5;
         waterBar.css("width", plant.water+"%")
     } else {
         console.log("Water is enough");
@@ -37,8 +37,8 @@ function giveWater() {
 function giveSunlight() {
     if (plant.sunlight < 100) {
         console.log("You gave sunlight");
-        plant.sunlight += 10;
-        $("body").css("background", "gold");
+        plant.sunlight += 5;
+        $("body").css("background", "floralwhite");
         sunlightBar.css("width", plant.sunlight+"%");
        
         setInterval(changeColor, 1000);
@@ -56,14 +56,9 @@ function changeColor() {
 function tempUp() {
     if (plant.temperature < 100) {
         console.log("Warming");
-        plant.temperature += 10;
+        plant.temperature += 5;
         tempBar.css("width", plant.temperature+"%");
-        if (plant.temperature >= 80) {
-            console.log("Too hot");
-            tempBar.css("background-color", "red");
-        } else {
-            tempBar.css("background-color", "lightgreen");
-        }
+        tempBarColor();
     } else {
         console.log("Tooooo hot!!!");
     }
@@ -75,15 +70,35 @@ function tempDown() {
         console.log("Cooling");
         plant.temperature -= 10;
         tempBar.css("width", plant.temperature+"%");
-        if (plant.temperature <= 20) {
-            console.log("Too cold");
-            tempBar.css("background-color", "blue");
-        } else {
-            tempBar.css("background-color", "lightgreen");
-        }
+        tempBarColor();
     } else {
         console.log("Toooo cold!!!");
-    }
-    
+    }    
 }
 
+function tempBarColor() {
+    if (plant.temperature <= 20) {
+        console.log("Too cold");
+        tempBar.css("background-color", "blue");
+    } else if (plant.temperature >=80) {
+        console.log("Too hot"); 
+        tempBar.css("background-color", "red");
+    } else {
+        tempBar.css("background-color", "salmon");
+    }
+}
+
+// setInterval
+setInterval(decreaseLevels, 300);
+
+// function for gameset
+function decreaseLevels() {
+    // console.log("decreasing");
+    plant.water = plant.water - 1;
+    plant.sunlight = plant.sunlight -1;
+    plant.temperature = plant.temperature -1;
+    waterBar.css("width", plant.water+"%");
+    sunlightBar.css("width", plant.sunlight+"%");
+    tempBar.css("width", plant.temperature+"%");
+    tempBarColor();
+}
