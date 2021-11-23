@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+body {
+    background: #c5e1a5;
+    font-family: 'Play', sans-serif;
+}
+
+.play {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 30px;
+}
+
+.status{
+    width: 300px;
+    height: fit-content;
+    display:flex;
+    flex-direction: column;
+    justify-self: flex-start;
+    border-radius: 30px;
+    margin: 30px;
+    padding: 10px;
+    border: 5px solid white;
+}
+
+.status h2 {
+   margin: 10px;
+   padding: 10px;
+   color: black;
+   border: 3px solid white;
+   border-radius: 15px;
+   background: white;
+   width: 80%;
+}
+
+.plantImg {
+    margin: 30px;
+}
+.barBox {
+    width: 90%;
+    border-radius: 15px;
+    background-color: white;
+    margin: 10px;
+    text-align: center;
+  }
+  
+#waterBar{
+    width: 60%;
+    height: 30px;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: DodgerBlue;
+}
+
+#sunlightBar{
+    width: 20%;
+    height: 30px;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: gold;
+}
+
+#tempBar{
+    width: 70%;
+    height: 30px;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: lightcoral;
+}
+
+.playBtns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 30px;
+}
+
+button {
+    width: 120px;
+    padding: 5px;
+    border-radius: 20px;
+    margin: 20px;
+    border: none;
+    color: black;
+    background: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+button:hover {
+    transform: scale(1.1);
+}
+
+#water:hover {
+    background: DodgerBlue;
+}
+    
+#sunlight:hover {
+    background: gold;
+}
+#tempUp:hover {
+    background: steelblue;
+}
+#tempDown:hover {
+    background: lightcoral;
+}
+#tempDown {
+    margin: 0px 20px;
+}
