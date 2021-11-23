@@ -38,35 +38,33 @@ body {
     margin: 30px;
 }
 .barBox {
-    width: 90%;
+    width: 280px;
     border-radius: 15px;
     background-color: white;
     margin: 10px;
     text-align: center;
+    border: 5px solid white;
   }
   
 #waterBar{
-    width: 60%;
+    /* width: 100%; */
     height: 30px;
     border-radius: 10px;
-    margin: 5px;
-    background-color: DodgerBlue;
+    background-color: skyblue;
 }
 
 #sunlightBar{
-    width: 20%;
+    /* width: 100%; */
     height: 30px;
     border-radius: 10px;
-    margin: 5px;
     background-color: gold;
 }
 
 #tempBar{
-    width: 70%;
+    /* width: 100%; */
     height: 30px;
     border-radius: 10px;
-    margin: 5px;
-    background-color: lightcoral;
+    background-color: salmon;
 }
 
 .playBtns {
@@ -88,21 +86,21 @@ button {
     cursor: pointer;
 }
 button:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
 }
 
 #water:hover {
-    background: DodgerBlue;
+    background: skyblue;
 }
     
 #sunlight:hover {
     background: gold;
 }
 #tempUp:hover {
-    background: steelblue;
+    background: lightcoral;
 }
 #tempDown:hover {
-    background: lightcoral;
+    background: DodgerBlue;
 }
 #tempDown {
     margin: 0px 20px;
