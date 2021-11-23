@@ -11,18 +11,13 @@ const waterBar = $("#waterBar");
 const sunlightBar = $("#sunlightBar");
 const tempBar = $("#tempBar");
 
-// level setup using object value
-waterBar.css("width", plant.water+"%");
-sunlightBar.css("width", plant.sunlight+"%");
-tempBar.css("width", plant.temperature+"%");
-
 // button event listener
 $("#water").on("click", giveWater);
 $("#sunlight").on("click", giveSunlight);
 $("#tempUp").on("click", tempUp);
 $("#tempDown").on("click", tempDown);
 
-// functions for buttons (event listener)
+// functions for play buttons (event listener)
 // give water
 function giveWater() {
     if (plant.water < 100) {
@@ -68,7 +63,7 @@ function tempUp() {
 function tempDown() {
     if (plant.temperature > 0 ) {
         console.log("Cooling");
-        plant.temperature -= 10;
+        plant.temperature -= 5;
         tempBar.css("width", plant.temperature+"%");
         tempBarColor();
     } else {
@@ -88,33 +83,6 @@ function tempBarColor() {
     }
 }
 
-// timer
-let seconds = 60;
-let timerInterval = setInterval(function() {
-    const timer = document.querySelector("#timer");
-    timer.innerHTML = `Timer: ${seconds--}`;
-    if (seconds == 0) {
-        timer.innerHTML = `Timer: 00`;
-        stopTimer();
-    }
-}, 1000);
-
-function stopTimer() {
-    clearInterval(timerInterval);
-}
-
-// setInterval
-let interval = setInterval(decreaseLevels, 300);
-
-// setTimeout
-let timeout = setTimeout(gameResult, 60000);
-
-// function to clear interval, timeout
-function gameEnd() {
-    clearInterval(interval)
-    clearTimeout(timeout)
-}
-
 // functions for gameset
 function decreaseLevels() {
     // console.log("decreasing");
@@ -132,7 +100,7 @@ function decreaseLevels() {
 function gameEndCheck() {
     if (plant.water < 0 || plant.sunlight < 0 || plant.temperature< 0) {
         alert("Your plant is dead");
-        gameEnd();
+        gameStop();
     } 
 }
 
@@ -141,10 +109,60 @@ function gameResult() {
     if (plant.water >0 && plant.sunlight>0 && plant.temperature>0) {
         if (20 <= plant.temperature <= 80) {
             alert("flowers");
-            gameEnd();
+            gameStop();
         } else {
             alert("good job")
-            gameEnd();
+            gameStop();
         }
     }
+}
+
+// Click Start button event listener
+const start = document.querySelector(".start");
+const startBtn = document.querySelector("#startBtn");
+const submit = document.querySelector("input[type='submit']");
+const play = document.querySelector(".play");
+
+startBtn.addEventListener("click", function() {
+    document.querySelector(".form1").classList.add("inactive");
+    document.querySelector(".form2").classList.remove("inactive");
+});
+
+submit.addEventListener("click", gamePlay);
+
+// setInterval
+let interval = setInterval(decreaseLevels, 300);
+// setTimeout
+let timeout = setTimeout(gameResult, 60000);
+
+function gamePlay() {
+    start.classList.add("inactive");
+    play.classList.remove("inactive");
+    waterBar.css("width", plant.water);
+    sunlightBar.css("width", plant.sunlight);
+    tempBar.css("width", plant.temperature);
+    interval;
+    timeout; 
+}
+
+// function to clear interval, timeout
+function gameStop() {
+    clearInterval(interval);
+    clearTimeout(timeout);
+    stopTimer();
+};
+
+// set timer
+let seconds = 60;
+let timerInterval = setInterval(function() {
+    const timer = document.querySelector("#timer");
+    timer.innerHTML = `Timer: ${seconds--}`;
+    if (seconds == 0) {
+        timer.innerHTML = `Timer: 00`;
+        stopTimer();
+    }
+}, 1000);
+
+function stopTimer() {
+    clearInterval(timerInterval);
 }

@@ -112,3 +112,34 @@ button:hover {
 #tempDown {
     margin: 0px 20px;
 }
+h1 {
+    /* color: white; */
+    margin: 10px;
+    text-align: center;
+    font-size: 40px;
+}
+.start {
+    border: 5px solid white;
+    border-radius: 10px;
+    text-align: center;
+    width: 400px;
+    height: 200px;
+    margin: 100px auto;
+    padding: 10px;
+}
+
+.start p {
+    margin-top: 10%;
+    font-size: 20px;
+}
+
+input {
+    margin: 5px;
+    padding: 7px;
+    border: none;
+    border-radius: 5px;
+}
+
+.inactive {
+    display: none;
+}

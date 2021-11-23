@@ -9,30 +9,43 @@
     <script src="js/script.js" defer></script>
     <title>Green Pet</title>
 </head>
-<div class="play">
-        <div class="status">
-            <h2 id="petName">Pet Name: Green</h3>
-            <div class="barBox">water
-                <div id="waterBar" ></div>
-            </div>
-            <div class="barBox">sunlight
-                <div id="sunlightBar"></div>
-            </div>
-            <div class="barBox">temperature
-                <div id="tempBar"></div>
-            </div>
-            <div id="timer"></div>
-        </div>
-        <div class="plantImg">Your pet</div>
-    <div class="playBtns">
-        <button id="water">Give Water</button>
-        <button id="sunlight">Sun Light</button>
-        <button id="tempUp">Warming</button>
-        <button id="tempDown">Cooling</button>
-    </div>
-</div>
-
 <body>
-    
+    <h1>Green Pet Tamagotchi</h1>
+    <div class="start">
+        <div class="form1">
+            <p>Play some games?</p>
+            <button id="startBtn">Yes</button>
+        </div>
+        <div class="form2 inactive">
+            <p>Give your name and pet name</p>
+            <label>User name: </label>
+            <input type="text" placeholder="Your name" class="userName"><br/>
+            <label>Pet name: </label>
+            <input type="text" placeholder="Pet name" class="petName"><br/>
+            <input type="submit">
+        </div>
+    </div>
+    <div class="play inactive">
+            <div class="status">
+                <h2 id="petName">Pet Name: Green</h3>
+                <div class="barBox">water
+                    <div id="waterBar" ></div>
+                </div>
+                <div class="barBox">sunlight
+                    <div id="sunlightBar"></div>
+                </div>
+                <div class="barBox">temperature
+                    <div id="tempBar"></div>
+                </div>
+                <div id="timer"></div>
+            </div>
+            <div class="plantImg">Your pet</div>
+        <div class="playBtns">
+            <button id="water">Give Water</button>
+            <button id="sunlight">Sun Light</button>
+            <button id="tempUp">Warming</button>
+            <button id="tempDown">Cooling</button>
+        </div>
+    </div>
 </body>
 </html>
