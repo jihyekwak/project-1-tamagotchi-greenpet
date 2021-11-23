@@ -67,6 +67,13 @@ body {
     background-color: salmon;
 }
 
+#timer {
+    text-align: right;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
 .playBtns {
     display: flex;
     flex-direction: column;

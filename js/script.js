@@ -88,10 +88,34 @@ function tempBarColor() {
     }
 }
 
-// setInterval
-setInterval(decreaseLevels, 300);
+// timer
+let seconds = 60;
+let timerInterval = setInterval(function() {
+    const timer = document.querySelector("#timer");
+    timer.innerHTML = `Timer: ${seconds--}`;
+    if (seconds == 0) {
+        timer.innerHTML = `Timer: 00`;
+        stopTimer();
+    }
+}, 1000);
 
-// function for gameset
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+
+// setInterval
+let interval = setInterval(decreaseLevels, 300);
+
+// setTimeout
+let timeout = setTimeout(gameResult, 60000);
+
+// function to clear interval, timeout
+function gameEnd() {
+    clearInterval(interval)
+    clearTimeout(timeout)
+}
+
+// functions for gameset
 function decreaseLevels() {
     // console.log("decreasing");
     plant.water = plant.water - 1;
@@ -101,4 +125,26 @@ function decreaseLevels() {
     sunlightBar.css("width", plant.sunlight+"%");
     tempBar.css("width", plant.temperature+"%");
     tempBarColor();
+    gameEndCheck();
+}
+
+// plant is alive check
+function gameEndCheck() {
+    if (plant.water < 0 || plant.sunlight < 0 || plant.temperature< 0) {
+        alert("Your plant is dead");
+        gameEnd();
+    } 
+}
+
+// plant flower check
+function gameResult() {
+    if (plant.water >0 && plant.sunlight>0 && plant.temperature>0) {
+        if (20 <= plant.temperature <= 80) {
+            alert("flowers");
+            gameEnd();
+        } else {
+            alert("good job")
+            gameEnd();
+        }
+    }
 }
