@@ -3,7 +3,9 @@ plant = {
     name: "green",
     water: 90,
     sunlight: 90, 
-    temperature: 60
+    temperature: 60,
+    isAlive: true,
+    hasFlowers: false,
 }
 
 // declare variables using jQuery
@@ -75,7 +77,7 @@ function tempBarColor() {
     if (plant.temperature <= 20) {
         console.log("Too cold");
         tempBar.css("background-color", "blue");
-    } else if (plant.temperature >=80) {
+    } else if (plant.temperature >= 80) {
         console.log("Too hot"); 
         tempBar.css("background-color", "red");
     } else {
@@ -100,18 +102,23 @@ function decreaseLevels() {
 function gameEndCheck() {
     if (plant.water < 0 || plant.sunlight < 0 || plant.temperature< 0) {
         alert("Your plant is dead");
+        plant.isAlive = false;
         gameStop();
     } 
 }
 
 // plant flower check
 function gameResult() {
-    if (plant.water >0 && plant.sunlight>0 && plant.temperature>0) {
-        if (20 <= plant.temperature <= 80) {
-            alert("flowers");
+    if (plant.water > 0 && plant.sunlight > 0 && plant.temperature > 0) {
+        if (plant.temperature <= 20 || plant.temperature >= 80) {
+            console.log("good job");
+            plant.isAlive = true;
+            plant.hasFlowers = false;
             gameStop();
-        } else {
-            alert("good job")
+        } else  {
+            console.log("flowers");
+            plant.isAlive = true;
+            plant.hasFlowers = true;
             gameStop();
         }
     }
@@ -173,4 +180,15 @@ function printResult() {
     play.classList.add("inactive");
     const result = document.querySelector(".result");
     result.classList.remove("inactive");
+    resultMsg();
+}
+function resultMsg() {
+    const resultMsgP = document.querySelector("#resultMsg");
+    if(plant.isAlive == false) {
+        resultMsgP.innerHTML = `I'm sorry! Your plant is dead.<br/>If you want to play again click the button.`;
+    } else if (plant.isAlive == true && plant.hasFlowers == true) {
+        resultMsgP.innerHTML = `Excellent! Your plant has beautiful flowers!<br/>If you want to play again click the button.`;
+    } else {
+        resultMsgP.innerHTML = `Good job!<br/>If you want to play again click the button.`;
+    }
 }
