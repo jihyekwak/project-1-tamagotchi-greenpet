@@ -45,7 +45,7 @@ const plant = {
         } else {
             console.log("Toooo cold!!!");
         }    
-    }
+    },
 }
 
 // declare variables using jQuery
@@ -121,29 +121,58 @@ function gameResult() {
 
 // Click Game Start button event listener
 const start = document.querySelector(".start");
-const startBtn = document.querySelector("#startBtn");
+const yesBtn = document.querySelector("#yesBtn");
 const submit = document.querySelector("input[type='submit']");
 const play = document.querySelector(".play");
+const startForm1 = document.querySelector(".form1");
+const startForm2 = document.querySelector(".form2");
+const startForm3 = document.querySelector(".form3");
+const userNameInput = document.querySelector(".userName");
+const petNameInput = document.querySelector(".petName");
+const startBtn = document.querySelector("#startBtn");
+let userName;
 
-startBtn.addEventListener("click", function() {
-    document.querySelector(".form1").classList.add("inactive");
-    document.querySelector(".form2").classList.remove("inactive");
+yesBtn.addEventListener("click", function() {
+    startForm1.classList.add("inactive");
+    startForm2.classList.remove("inactive");
 });
 
-submit.addEventListener("click", gamePlay);
+submit.addEventListener("click", function() {
+    startForm2.classList.add("inactive");
+    startForm3.classList.remove("inactive");
+    userName = userNameInput.value;
+    return plant.name = petNameInput.value;
+});
 
-// setInterval
-let interval = setInterval(gameSet.decreaseLevels, 300);
-// setTimeout
-let timeout = setTimeout(gameResult, 60000);
+startBtn.addEventListener("click", function() {
+    document.querySelector("#userName").innerHTML = `Player Name: ${userName}`;
+    document.querySelector("#petName").innerHTML = `Pet Name: ${plant.name}`;
+    startForm3.classList.add("inactive");
+    start.classList.add("inactive");
+    play.classList.remove("inactive");
+    document.querySelector(".time").classList.remove("inactive");
+    gamePlay();
+});
+let interval;
+let timeout;
+let timerInterval;
+let seconds = 60;
 
 // game start function 
 function gamePlay() {
-    start.classList.add("inactive");
-    play.classList.remove("inactive");
     gameSet.initialBars;
-    interval;
-    timeout; 
+    // setInterval
+    interval = setInterval(gameSet.decreaseLevels, 300);
+    // setTimeout
+    timeout = setTimeout(gameResult, 60000);
+    timerInterval = setInterval(function() {
+        const timer = document.querySelector("#timer");
+        timer.innerHTML = `Timer: ${seconds--}`;
+        if (seconds == 0) {
+            timer.innerHTML = `Timer: 00`;
+            stopTimer();
+        }
+    }, 1000);
 }
 
 // function to clear interval, timeout
@@ -154,36 +183,43 @@ function gameStop() {
     printResult();
 };
 
-// set timer
-let seconds = 60;
-let timerInterval = setInterval(function() {
-    const timer = document.querySelector("#timer");
-    timer.innerHTML = `Timer: ${seconds--}`;
-    if (seconds == 0) {
-        timer.innerHTML = `Timer: 00`;
-        stopTimer();
-    }
-}, 1000);
-
 function stopTimer() {
     clearInterval(timerInterval);
 }
 
 // result page
+const result = document.querySelector(".result");
+const resultMsgP = document.querySelector("#resultMsg");
+const playAgainBtn = document.querySelector("#playAgain");
+
 function printResult() {
     play.classList.add("inactive");
-    const result = document.querySelector(".result");
+    document.querySelector(".time").classList.add("inactive");
     result.classList.remove("inactive");
     resultMsg();
 }
 
 function resultMsg() {
-    const resultMsgP = document.querySelector("#resultMsg");
+    document.querySelector("#resultUserName").innerHTML = userName;
     if(plant.isAlive == false) {
-        resultMsgP.innerHTML = `I'm sorry! Your plant is dead.<br/>If you want to play again click the button.`;
+        resultMsgP.innerHTML = `I'm sorry! Your plant ${plant.name} is dead.<br/>If you want to play again click the button.`;
     } else if (plant.isAlive == true && plant.hasFlowers == true) {
-        resultMsgP.innerHTML = `Excellent! Your plant has beautiful flowers!<br/>If you want to play again click the button.`;
+        resultMsgP.innerHTML = `Excellent! Your plant ${plant.name} has beautiful flowers!<br/>If you want to play again click the button.`;
     } else {
-        resultMsgP.innerHTML = `Good job!<br/>If you want to play again click the button.`;
+        resultMsgP.innerHTML = `Good job! Your plant ${plant.name} is growing well. <br/>If you want to play again click the button.`;
     }
 }
+
+playAgainBtn.addEventListener("click", function() {
+    result.classList.add("inactive");
+    start.classList.remove("inactive");
+    startForm1.classList.remove("inactive");
+    startForm2.classList.add("inactive");
+});
+
+// temporary pause button
+document.querySelector("#pause").addEventListener("click", function () {
+    clearInterval(interval);
+    clearTimeout(timeout);
+    stopTimer();
+});
