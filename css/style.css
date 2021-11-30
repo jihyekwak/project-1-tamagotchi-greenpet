@@ -74,6 +74,17 @@ body {
     font-size: 20px;
 }
 
+.plantImg {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;    
+}
+
+.plantImg img {
+    width: 150px;
+    height: 150px;
+}
+
 .playBtns {
     display: flex;
     flex-direction: column;

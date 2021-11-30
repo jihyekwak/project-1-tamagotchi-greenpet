@@ -45,7 +45,7 @@ const plant = {
         } else {
             console.log("Toooo cold!!!");
         }    
-    },
+    }
 }
 
 // declare variables using jQuery
@@ -90,6 +90,12 @@ const gameSet = {
         tempBar.css("width", plant.temperature+"%");
         gameSet.tempBarColor();
         gameEndCheck();
+    },
+    plantCharacter() {
+        const plantImg = document.querySelector("#plantImg");
+        const plantImgs = ["/images/plantImgs/0.png", "/images/plantImgs/1.png", "/images/plantImgs/2.png", "/images/plantImgs/3.png", "/images/plantImgs/4.png"];
+        let randomImg = plantImgs[Math.floor(Math.random() * plantImgs.length)];
+        plantImg.setAttribute("src", randomImg);
     }
 }
 
@@ -160,9 +166,10 @@ let seconds = 60;
 
 // game start function 
 function gamePlay() {
+    gameSet.plantCharacter();
     gameSet.initialBars;
     // setInterval
-    interval = setInterval(gameSet.decreaseLevels, 300);
+    interval = setInterval(gameSet.decreaseLevels, 200);
     // setTimeout
     timeout = setTimeout(gameResult, 60000);
     timerInterval = setInterval(function() {
