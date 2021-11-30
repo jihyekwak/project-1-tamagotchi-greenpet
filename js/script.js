@@ -1,11 +1,12 @@
 // pet plant object
 const plant = {
-    name: "green",
+    name: "",
     water: 90,
     sunlight: 90, 
     temperature: 60,
     isAlive: true,
     hasFlowers: false,
+    img:"",
     giveWater() {
         if (plant.water < 100) {
             console.log("You gave water");
@@ -96,6 +97,8 @@ const gameSet = {
         const plantImgs = ["/images/plantImgs/0.png", "/images/plantImgs/1.png", "/images/plantImgs/2.png", "/images/plantImgs/3.png", "/images/plantImgs/4.png"];
         let randomImg = plantImgs[Math.floor(Math.random() * plantImgs.length)];
         plantImg.setAttribute("src", randomImg);
+        plant.img = plantImg.getAttribute("src");
+        console.log(plant.img);
     }
 }
 
@@ -138,21 +141,36 @@ const petNameInput = document.querySelector(".petName");
 const startBtn = document.querySelector("#startBtn");
 let userName;
 
+// want to play? yes
 yesBtn.addEventListener("click", function() {
     startForm1.classList.add("inactive");
     startForm2.classList.remove("inactive");
 });
 
+// enter user name, pet name
 submit.addEventListener("click", function() {
     startForm2.classList.add("inactive");
     startForm3.classList.remove("inactive");
     userName = userNameInput.value;
-    return plant.name = petNameInput.value;
+    plant.name = petNameInput.value;
 });
 
+// game start
+
+
 startBtn.addEventListener("click", function() {
-    document.querySelector("#userName").innerHTML = `Player Name: ${userName}`;
-    document.querySelector("#petName").innerHTML = `Pet Name: ${plant.name}`;
+    if(userName != "") {
+        document.querySelector("#userName").innerHTML = `Player: ${userName}`;
+    } else {
+        document.querySelector("#userName").innerHTML = `Player`;
+    }
+    if (plant.name != "") {
+        document.querySelector("#petName").innerHTML = `Pet Name: ${plant.name}`;
+    } else {
+        document.querySelector("#petName").innerHTML = `Pet Name: Green`;
+    }
+    
+    
     startForm3.classList.add("inactive");
     start.classList.add("inactive");
     play.classList.remove("inactive");
@@ -207,22 +225,45 @@ function printResult() {
 }
 
 function resultMsg() {
+    const resultImg = document.querySelector("#resultPlant");
     document.querySelector("#resultUserName").innerHTML = userName;
     if(plant.isAlive == false) {
+        // result img
+        resultImg.setAttribute("src", plant.img);
+        resultImg.style.filter="grayscale(100%)";
+        // result msg
         resultMsgP.innerHTML = `I'm sorry! Your plant ${plant.name} is dead.<br/>If you want to play again click the button.`;
     } else if (plant.isAlive == true && plant.hasFlowers == true) {
+        resultImg.setAttribute("src", plant.img);
         resultMsgP.innerHTML = `Excellent! Your plant ${plant.name} has beautiful flowers!<br/>If you want to play again click the button.`;
+
     } else {
+        resultImg.setAttribute("src", plant.img);
         resultMsgP.innerHTML = `Good job! Your plant ${plant.name} is growing well. <br/>If you want to play again click the button.`;
     }
 }
 
 playAgainBtn.addEventListener("click", function() {
+    gameReset();
+    gameSet.initialBars;
     result.classList.add("inactive");
     start.classList.remove("inactive");
     startForm1.classList.remove("inactive");
     startForm2.classList.add("inactive");
+    
 });
+
+function gameReset() {
+    userNameInput.value = "";
+    petNameInput.value = "";
+    plant.name = "",
+    plant.water = 90,
+    plant.sunlight = 90, 
+    plant.temperature = 60,
+    plant.isAlive = true,
+    plant.hasFlowers = false,
+    plant.img = ""
+}
 
 // temporary pause button
 document.querySelector("#pause").addEventListener("click", function () {
