@@ -31,6 +31,7 @@ As a user, I want to click a button to play again, If the game result is fail.
 
 - HTML/CSS
 - Javascript
+- jQuery
 
 
 ## <br>Build Codes
@@ -43,9 +44,10 @@ JS - Object, Functions, DOM, Event Listener
 
 - Step 2:  
 HTML/CSS - Start page, Result page  
-JS - DOM, Event Listener
+JS - DOM, Event Listener, Functions
 
 - Step 3:  
+HTMl/CSS - Style, Image
 
 ## <br>Chanllenges
 
