@@ -136,12 +136,12 @@ input[type='submit'] {
 }
 
 .plantImg img {
-    width: 200px;
-    height: 200px;
+    width: 260px;
+    height: 260px;
     position: relative;
     animation-name: example;
     animation-duration: 5s;
-    animation-iteration-count: 3;
+    animation-iteration-count: 9;
 }
 
 @keyframes example {
@@ -222,8 +222,8 @@ button:hover {
 }
 
 #resultPlant {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
 }
 
 .resultMsg {

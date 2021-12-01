@@ -110,13 +110,24 @@ const gameSet = {
         plantImg.setAttribute("src", randomImg);
         plant.img = plantImg.getAttribute("src");
         // console.log(plant.img);
-    }
+    },
 }
 
+// Button click sound effect
+const submitSound = new Audio();
+submitSound.src = "/sound/click-1.mp3";
+function submitEffect() {
+    submitSound.play();
+}
+const sound = new Audio();
+sound.src = "/sound/click-4.wav";
+function soundEffect() {
+    sound.play();
+}
 // plant.isAlive check
 function gameEndCheck() {
     if (plant.water < 0 || plant.sunlight < 0 || plant.temperature< 0 || plant.time == 100) {
-        alert("Your plant is dead");
+        // alert("Your plant is dead");
         plant.isAlive = false;
         gameStop();
     } 
@@ -210,7 +221,7 @@ function gameStop() {
     clearInterval(interval1);
     clearInterval(interval2);
     clearTimeout(timeout);
-    printResult();
+    displayResult();
 };
 
 // result page
@@ -218,7 +229,7 @@ const result = document.querySelector(".result");
 const resultMsgP = document.querySelector("#resultMsg");
 const playAgainBtn = document.querySelector("#playAgain");
 
-function printResult() {
+function displayResult() {
     play.classList.add("inactive");
     // document.querySelector(".time").classList.add("inactive");
     result.classList.remove("inactive");
