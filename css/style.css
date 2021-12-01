@@ -1,77 +1,135 @@
-@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&display=swap');
 
 body {
+    font-family: 'Outfit', sans-serif;
+}
+
+#title {
+    /* color: white; */
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    font-size: 60px;
+    background-color: skyblue;
+    height: 110px;
+    padding: 40px;
+    border-radius: 2px;
+}
+
+.start {
+    border: 5px solid #c5e1a5;
+    border-radius: 20px;
+    text-align: center;
+    width: 400px;
+    height: 230px;
+    margin: 80px auto;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.start p {
+    font-size: 25px;
+}
+
+.start button {
+    border: none;
     background: #c5e1a5;
-    font-family: 'Play', sans-serif;
+    width: 90px;
+    height: 40px;
+    margin: 15px;
+    border-radius: 15px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+}
+
+#startBtn {
+    width: 150px;
+    /* font-family: 'Outfit', sans-serif;
+    font-size: 18px; */
+}
+
+input {
+    margin: 5px;
+    padding: 7px;
+    border: 2px solid #c5e1a5;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+input[type='submit'] {
+    border: none;
+    background: #c5e1a5;
+    width: 90px;
+    height: 40px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
 }
 
 .play {
+    background: #c5e1a5;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 30px;
+    margin: 0px;
 }
 
-.status{
+.level{
     width: 300px;
     height: fit-content;
     display:flex;
     flex-direction: column;
     justify-self: flex-start;
     border-radius: 30px;
-    margin: 30px;
+    margin: 30px 30px 30px 60px;
     padding: 10px;
     border: 5px solid white;
 }
 
-.status h3 {
-   margin: 10px;
-   padding: 10px;
-   color: black;
-   border: 3px solid white;
-   border-radius: 15px;
-   background: white;
-   width: 80%;
-}
-
-.plantImg {
-    margin: 30px;
-}
+.level h4 {
+    margin: 0 0 0 2px;
+    padding: 3px;
+    color: black;
+    width: 90%;
+ }
+ 
 .barBox {
     width: 280px;
     border-radius: 15px;
     background-color: white;
-    margin: 10px;
+    margin: 10px auto;
     text-align: center;
     border: 5px solid white;
   }
   
 #waterBar{
-    /* width: 100%; */
     height: 30px;
     border-radius: 10px;
     background-color: skyblue;
 }
 
 #sunlightBar{
-    /* width: 100%; */
     height: 30px;
     border-radius: 10px;
     background-color: gold;
 }
 
 #tempBar{
-    /* width: 100%; */
     height: 30px;
     border-radius: 10px;
     background-color: salmon;
 }
 
-#timer {
-    text-align: right;
-    margin-top: 10px;
-    margin-right: 10px;
-    font-size: 20px;
+#timeBar{
+    height: 30px;
+    border-radius: 10px;
+    background-color: lavender;
+}
+
+.plantImg {
+    margin: 30px;
 }
 
 .plantImg {
@@ -81,27 +139,34 @@ body {
 }
 
 .plantImg img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+    
+}
+
+.plantImg img:hover {
+    transform: scale(1.2);
 }
 
 .playBtns {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 30px;
+    margin: 30px 60px 30px 30px;
 }
 
-button {
+.playBtns button {
     width: 120px;
+    height: 50px;
     padding: 5px;
-    border-radius: 20px;
+    border-radius: 60px;
     margin: 20px;
     border: none;
     color: black;
     background: white;
-    font-size: 16px;
     cursor: pointer;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
 }
 
 button:hover {
@@ -121,55 +186,31 @@ button:hover {
 #tempDown:hover {
     background: DodgerBlue;
 }
-#tempDown {
-    margin: 0px 20px;
-}
-h1 {
-    /* color: white; */
-    margin-top: 30px;
-    text-align: center;
-    font-size: 40px;
-}
+
 .time {
     text-align: right;
 }
 .time button {
     margin: 0 10px 0 10px;
 }
-.start {
-    border: 5px solid white;
-    border-radius: 10px;
-    text-align: center;
-    width: 400px;
-    height: 200px;
-    margin: 100px auto;
-    padding: 10px;
-}
 
-.start p {
-    font-size: 20px;
-}
-
-input {
-    margin: 5px;
-    padding: 7px;
-    border: none;
-    border-radius: 5px;
-}
-
-input[type='submit'] {
-    border: none;
-    background: white;
-    margin: 10px;
-    border-radius: 10px;
+.ground {
+    width: 100%;
+    height: 100px;
+    background:#795548;
+    border-radius: 2px;
 }
 
 .result {
+    width: 50%;
+    min-width: 500px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    margin: 50px;
+    margin: 50px auto;
+    border: 3px solid gray;
+    border-radius: 20px;
 }
 
 #resultPlant {
@@ -190,7 +231,20 @@ input[type='submit'] {
 }
 
 .resultMsg p {
-    font-size: 20px;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+#playAgain {
+    border: none;
+    background: gray;
+    color: white;
+    width: 150px;
+    height: 40px;
+    margin: 15px;
+    border-radius: 15px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
 }
 
 .inactive {

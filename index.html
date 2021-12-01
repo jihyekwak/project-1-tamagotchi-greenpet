@@ -10,36 +10,35 @@
     <title>Green Pet</title>
 </head>
 <body>
-    <h1>Green Pet Tamagotchi</h1>
-    <div class="time inactive">
+    <h1 id="title">Green Pet Tamagotchi</h1>
+            <!-- temporary pause button -->
+    <!-- <div class="time inactive">
         <span id="timer">Timer: 00</span>
-        <!-- temporary pause button -->
         <button id="pause">pause</button>   
-    </div>
-    </div>
-    
+    </div> -->
     <div class="start">
-        <div class="form1">
+        <div class="start-form1">
             <p>Play some games?</p>
-            <button id="yesBtn">Yes</button>
+            <button id="yesBtn">Yes!!</button>
         </div>
-        <div class="form2 inactive">
+        <div class="start-form2 inactive">
             <p>Give your name and pet name</p>
-            <label>User name: </label>
+            <label>Player name : </label>
             <input type="text" placeholder="Your name" class="userName"><br/>
-            <label>Pet name: </label>
+            <label>Pet name : </label>
             <input type="text" placeholder="Pet name" class="petName"><br/>
             <input type="submit">
         </div>
-        <div class="form3 inactive">
+        <div class="start-form3 inactive">
             <p>Shall we start?</p>
             <button id="startBtn">Game Start</button>
         </div>
     </div>
     <div class="play inactive">
-        <div class="status">
-            <h3 id="userName"></h3>
-            <h3 id="petName"></h3>                
+        <!-- display levels -->
+        <div class="level">
+            <h4 id="userName"></h3>
+            <h4 id="petName"></h3>                
             <div class="barBox">water
                 <div id="waterBar" ></div>
             </div>
@@ -49,13 +48,15 @@
             <div class="barBox">temperature
                 <div id="tempBar"></div>
             </div>
-            <!-- <div id="timer"></div> -->
-            <!-- temporary pause button -->
-            <!-- <button id="pause">pause</button> -->
+            <div class="barBox">time
+                <div id="timeBar"></div>
+            </div>
         </div>
+        <!-- display pet plant image -->
         <div class="plantImg">
             <img alt="yourPet" id="plantImg">
         </div>
+        <!-- display game buttons -->
         <div class="playBtns">
             <button id="water">Give Water</button>
             <button id="sunlight">Sun Light</button>
@@ -73,5 +74,6 @@
             <button id="playAgain">Play again</button>
         </div>
     </div>
+    <div class="ground"></div>
 </body>
 </html>

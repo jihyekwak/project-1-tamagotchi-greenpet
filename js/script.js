@@ -7,6 +7,7 @@ const plant = {
     isAlive: true,
     hasFlowers: false,
     img:"",
+    time: 0,
     giveWater() {
         if (plant.water < 100) {
             console.log("You gave water");
@@ -20,9 +21,8 @@ const plant = {
         if (plant.sunlight < 100) {
             console.log("You gave sunlight");
             plant.sunlight += 5;
-            $("body").css("background", "floralwhite");
             sunlightBar.css("width", plant.sunlight+"%");
-            setInterval(gameSet.giveSunshine, 1000);
+            gameSet.giveSunshine();
         } else {
             console.log("Sunlight is enough");
         }
@@ -53,6 +53,7 @@ const plant = {
 const waterBar = $("#waterBar");
 const sunlightBar = $("#sunlightBar");
 const tempBar = $("#tempBar");
+const timeBar = $("#timeBar");
 
 // button event listener
 $("#water").on("click", plant.giveWater);
@@ -66,6 +67,7 @@ const gameSet = {
         waterBar.css("width", plant.water);
         sunlightBar.css("width", plant.sunlight);
         tempBar.css("width", plant.temperature);
+        timeBar.css("width", plant.time);
     },
     tempBarColor() {
         if (plant.temperature <= 20) {
@@ -79,10 +81,13 @@ const gameSet = {
         }
     },
     giveSunshine() {
-        $("body").css("background", "#c5e1a5");
+        console.log("light");
+        $(".play").css("background", "gold");
+        setTimeout(function () {
+            $(".play").css("background", "#c5e1a5");
+        }, 1000); 
     },
     decreaseLevels() {
-        // console.log("decreasing");
         plant.water = plant.water - 1;
         plant.sunlight = plant.sunlight -1;
         plant.temperature = plant.temperature -1;
@@ -90,6 +95,11 @@ const gameSet = {
         sunlightBar.css("width", plant.sunlight+"%");
         tempBar.css("width", plant.temperature+"%");
         gameSet.tempBarColor();
+        gameEndCheck();
+    },
+    timer() {
+        plant.time = plant.time + (100/45);
+        timeBar.css("width", plant.time+"%");
         gameEndCheck();
     },
     plantCharacter() {
@@ -104,7 +114,7 @@ const gameSet = {
 
 // plant.isAlive check
 function gameEndCheck() {
-    if (plant.water < 0 || plant.sunlight < 0 || plant.temperature< 0) {
+    if (plant.water < 0 || plant.sunlight < 0 || plant.temperature< 0 || plant.time == 100) {
         alert("Your plant is dead");
         plant.isAlive = false;
         gameStop();
@@ -133,9 +143,9 @@ const start = document.querySelector(".start");
 const yesBtn = document.querySelector("#yesBtn");
 const submit = document.querySelector("input[type='submit']");
 const play = document.querySelector(".play");
-const startForm1 = document.querySelector(".form1");
-const startForm2 = document.querySelector(".form2");
-const startForm3 = document.querySelector(".form3");
+const startForm1 = document.querySelector(".start-form1");
+const startForm2 = document.querySelector(".start-form2");
+const startForm3 = document.querySelector(".start-form3");
 const userNameInput = document.querySelector(".userName");
 const petNameInput = document.querySelector(".petName");
 const startBtn = document.querySelector("#startBtn");
@@ -156,28 +166,29 @@ submit.addEventListener("click", function() {
 });
 
 // game start
-
-
 startBtn.addEventListener("click", function() {
+    const userNameBar = document.querySelector("#userName");
+    const petNameBar = document.querySelector("#petName");
     if(userName != "") {
-        document.querySelector("#userName").innerHTML = `Player: ${userName}`;
+        userNameBar.innerHTML = `Player: ${userName}`;
     } else {
-        document.querySelector("#userName").innerHTML = `Player`;
+        userNameBar.innerHTML = `Player`;
     }
     if (plant.name != "") {
-        document.querySelector("#petName").innerHTML = `Pet Name: ${plant.name}`;
+        petNameBar.innerHTML = `Pet Name: ${plant.name}`;
     } else {
-        document.querySelector("#petName").innerHTML = `Pet Name: Green`;
+        petNameBar.innerHTML = `Pet Name: Green`;
     }
     
-    
+    document.querySelector("#title").style.height = "80px";
     startForm3.classList.add("inactive");
     start.classList.add("inactive");
     play.classList.remove("inactive");
-    document.querySelector(".time").classList.remove("inactive");
+    // document.querySelector(".time").classList.remove("inactive");
     gamePlay();
 });
-let interval;
+let interval1;
+let interval2;
 let timeout;
 let timerInterval;
 let seconds = 60;
@@ -187,30 +198,19 @@ function gamePlay() {
     gameSet.plantCharacter();
     gameSet.initialBars;
     // setInterval
-    interval = setInterval(gameSet.decreaseLevels, 200);
+    interval1 = setInterval(gameSet.decreaseLevels, 200);
+    interval2 = setInterval(gameSet.timer, 1000);
     // setTimeout
-    timeout = setTimeout(gameResult, 60000);
-    timerInterval = setInterval(function() {
-        const timer = document.querySelector("#timer");
-        timer.innerHTML = `Timer: ${seconds--}`;
-        if (seconds == 0) {
-            timer.innerHTML = `Timer: 00`;
-            stopTimer();
-        }
-    }, 1000);
+    timeout = setTimeout(gameResult, 45000);
 }
 
 // function to clear interval, timeout
 function gameStop() {
-    clearInterval(interval);
+    clearInterval(interval1);
+    clearInterval(interval2);
     clearTimeout(timeout);
-    stopTimer();
     printResult();
 };
-
-function stopTimer() {
-    clearInterval(timerInterval);
-}
 
 // result page
 const result = document.querySelector(".result");
@@ -219,7 +219,7 @@ const playAgainBtn = document.querySelector("#playAgain");
 
 function printResult() {
     play.classList.add("inactive");
-    document.querySelector(".time").classList.add("inactive");
+    // document.querySelector(".time").classList.add("inactive");
     result.classList.remove("inactive");
     resultMsg();
 }
@@ -232,14 +232,14 @@ function resultMsg() {
         resultImg.setAttribute("src", plant.img);
         resultImg.style.filter="grayscale(100%)";
         // result msg
-        resultMsgP.innerHTML = `I'm sorry! Your plant ${plant.name} is dead.<br/>If you want to play again click the button.`;
+        resultMsgP.innerHTML = `I'm sorry!<br />Your plant ${plant.name} is dead.<br/>If you want to play again click the button.`;
     } else if (plant.isAlive == true && plant.hasFlowers == true) {
         resultImg.setAttribute("src", plant.img);
-        resultMsgP.innerHTML = `Excellent! Your plant ${plant.name} has beautiful flowers!<br/>If you want to play again click the button.`;
+        resultMsgP.innerHTML = `Excellent!<br />Your plant ${plant.name} has beautiful flowers!<br/>If you want to play again click the button.`;
 
     } else {
         resultImg.setAttribute("src", plant.img);
-        resultMsgP.innerHTML = `Good job! Your plant ${plant.name} is growing well. <br/>If you want to play again click the button.`;
+        resultMsgP.innerHTML = `Good job!<br />Your plant ${plant.name} is growing well. <br/>If you want to play again click the button.`;
     }
 }
 
@@ -262,12 +262,6 @@ function gameReset() {
     plant.temperature = 60,
     plant.isAlive = true,
     plant.hasFlowers = false,
-    plant.img = ""
+    plant.img = "",
+    plant.time = 0
 }
-
-// temporary pause button
-document.querySelector("#pause").addEventListener("click", function () {
-    clearInterval(interval);
-    clearTimeout(timeout);
-    stopTimer();
-});
