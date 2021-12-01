@@ -19,8 +19,13 @@ project one - make a Tamagotchi game
 ---
 
 As a user, I want to click a button to start game.  
-As a user, I want to give a name to my pet.  
-As a user, I want to click buttons to take care of my pet.   
+As a user, I want to input my username.
+As a user, I want to input my pet name.
+As a user, I want to click a button to give water.
+As a user, I want to click a button to give sunlight.
+As a user, I want to click a button to increase the temperature.
+As a user, I want to click a button to decrease the temperature.
+As a user, I want to see the level bars, and time remain.
 As a user, I want to click a button to play again, If the game result is success.  
 As a user, I want to click a button to play again, If the game result is fail.
 
