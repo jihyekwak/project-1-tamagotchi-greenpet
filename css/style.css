@@ -4,16 +4,28 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
-#title {
-    /* color: white; */
+.title {
     margin-top: 0px;
     margin-bottom: 0px;
     text-align: center;
-    font-size: 60px;
     background-color: skyblue;
-    height: 110px;
-    padding: 40px;
+    height: 130px;
+    padding: 10px;
     border-radius: 2px;
+}
+
+#title {
+    margin-top: 20px;
+    font-size: 60px;
+}
+
+.bgmPause {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-right: 5px;
+    border: none;
+    border-radius: 3px;
 }
 
 .start {

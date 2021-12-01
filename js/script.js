@@ -205,6 +205,36 @@ let timeout;
 let timerInterval;
 let seconds = 60;
 
+// BGM sound
+const bgmSound = new Audio();
+bgmSound.src= "/sound/Komiku_-_04_-_Shopping_List.mp3";
+
+// BGM button display
+function displayBgmBtn() {
+    if ($(".bgmPause").hasClass("inactive")) {
+        $(".bgmPause").removeClass("inactive");
+    } else {
+        $(".bgmPause").addClass("inactive");    
+    }
+}
+
+// BGM button event listener
+$(".bgmPause").on("click", function () {
+    
+    if($(".bgmPause").text() == "BGM pause")
+    {
+        console.log("stop music");
+        bgmSound.pause();
+        $(".bgmPause").html("BGM play");
+    } else {
+        console.log("start music");
+        bgmSound.play();
+        $(".bgmPause").html("BGM pause");
+    }
+})
+
+
+
 // game start function 
 function gamePlay() {
     gameSet.plantCharacter();
@@ -214,6 +244,8 @@ function gamePlay() {
     interval2 = setInterval(gameSet.timer, 1000);
     // setTimeout
     timeout = setTimeout(gameResult, 45000);
+    bgmSound.play();
+    displayBgmBtn();
 }
 
 // function to clear interval, timeout
@@ -222,6 +254,8 @@ function gameStop() {
     clearInterval(interval2);
     clearTimeout(timeout);
     displayResult();
+    bgmSound.pause();
+    displayBgmBtn();
 };
 
 // result page
