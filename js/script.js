@@ -16,6 +16,7 @@ const plant = {
         } else {
             console.log("Water is enough");
         }
+        gameSet.plantGrow();
     },
     giveSunlight() {
         if (plant.sunlight < 100) {
@@ -108,7 +109,7 @@ const gameSet = {
         let randomImg = plantImgs[Math.floor(Math.random() * plantImgs.length)];
         plantImg.setAttribute("src", randomImg);
         plant.img = plantImg.getAttribute("src");
-        console.log(plant.img);
+        // console.log(plant.img);
     }
 }
 

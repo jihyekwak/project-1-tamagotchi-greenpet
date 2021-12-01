@@ -130,9 +130,6 @@ input[type='submit'] {
 
 .plantImg {
     margin: 30px;
-}
-
-.plantImg {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;    
@@ -141,7 +138,18 @@ input[type='submit'] {
 .plantImg img {
     width: 200px;
     height: 200px;
-    
+    position: relative;
+    animation-name: example;
+    animation-duration: 5s;
+    animation-iteration-count: 3;
+}
+
+@keyframes example {
+    0%   {left:0px; bottom:0px;}
+    25%  {left:100px; bottom:0px;}
+    50%  {left:0px; bottom:0px;}
+    75%  {right:100px; bottom:0px;}
+    100% {right:0px; bottom:0px;}
 }
 
 .plantImg img:hover {
