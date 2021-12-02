@@ -1,7 +1,7 @@
 # tamagotchi---green-pet
 Project one - Tamagotchi
 
-My tamagotchi pet is plant. Player can give water, sunlight, and proper temperature with buttons.
+My tamagotchi pet is plant. The pet character is given randomly. Player can give water, sunlight, and proper temperature to ther pet with buttons. If player press buttons the levels up or down, and give some effects like sound and changing background color. 
 If the plant pet does noe get enough water, sunlight or the temperature is not proper to grow plant, the plant pet die.
 If the player gives enough water, sunlight, proper temperature to the pet plant, the plant grows well and blooms flowers.
 If the temperature is too cold or too hot, the plant can't bloom flowers.
