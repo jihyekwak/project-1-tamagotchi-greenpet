@@ -16,7 +16,6 @@ const plant = {
         } else {
             console.log("Water is enough");
         }
-        gameSet.plantGrow();
     },
     giveSunlight() {
         if (plant.sunlight < 100) {
