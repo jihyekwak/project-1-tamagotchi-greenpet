@@ -1,7 +1,12 @@
 # tamagotchi---green-pet
-project one - make a Tamagotchi game
+Project one - Tamagotchi
 
-<!-- A README.md file with an explanation of what the project is and why you made it, your user stories, explanations of the technologies used, the approach taken, installation instructions, unsolved problems, the other components previously indicated (if applicable). In this project, also include your wireframes in the readme. -->
+My tamagotchi pet is plant. Player can give water, sunlight, and proper temperature with buttons.
+If the plant pet does noe get enough water, sunlight or the temperature is not proper to grow plant, the plant pet die.
+If the player gives enough water, sunlight, proper temperature to the pet plant, the plant grows well and blooms flowers.
+If the temperature is too cold or too hot, the plant can't bloom flowers.
+When the game ends, the player can choose to play again.
+
 
 ### <br>Wireframe
 
@@ -26,6 +31,8 @@ As a user, I want to click a button to give sunlight.
 As a user, I want to click a button to increase the temperature.
 As a user, I want to click a button to decrease the temperature.
 As a user, I want to see the level bars, and time remain.
+As a user, I want to click a button to stop background sound button.
+As a user, I want to click a button to play background sound button.
 As a user, I want to click a button to play again, If the game result is success.  
 As a user, I want to click a button to play again, If the game result is fail.
 
@@ -49,12 +56,17 @@ JS - Object, Functions, DOM, Event Listener
 
 - Step 2:  
 HTML/CSS - Start page, Result page  
-JS - DOM, Event Listener, Functions
+JS - DOM, Event Listener, Functions, jQuery
 
 - Step 3:  
-HTMl/CSS - Style, Image
+HTMl/CSS - Styling pages, Add Images
+JS - Object, Sound effect, Event Listener, Functions
 
 ## <br>Chanllenges
 
 ---
+
+- setInterval
+- setTimeout
+- methods
 
