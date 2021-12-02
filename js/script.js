@@ -154,9 +154,9 @@ const start = document.querySelector(".start");
 const yesBtn = document.querySelector("#yesBtn");
 const submit = document.querySelector("input[type='submit']");
 const play = document.querySelector(".play");
-const startForm1 = document.querySelector(".start-form1");
-const startForm2 = document.querySelector(".start-form2");
-const startForm3 = document.querySelector(".start-form3");
+const startForm1 = document.querySelector(".startForm1");
+const startForm2 = document.querySelector(".startForm2");
+const startForm3 = document.querySelector(".startForm3");
 const userNameInput = document.querySelector(".userName");
 const petNameInput = document.querySelector(".petName");
 const startBtn = document.querySelector("#startBtn");
@@ -281,10 +281,11 @@ function resultMsg() {
     } else if (plant.isAlive == true && plant.hasFlowers == true) {
         resultImg.setAttribute("src", plant.img);
         resultMsgP.innerHTML = `Excellent!<br />Your plant ${plant.name} has beautiful flowers!<br/>If you want to play again click the button.`;
-
+        resultImg.style.filter="none";
     } else {
         resultImg.setAttribute("src", plant.img);
         resultMsgP.innerHTML = `Good job!<br />Your plant ${plant.name} is growing well. <br/>If you want to play again click the button.`;
+        resultImg.style.filter="none";
     }
 }
 
